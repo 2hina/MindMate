@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useAuth } from '../context/AuthContext';
 import Background    from '../components/Background';
 import Nav           from '../components/Nav';
 import Hero          from '../components/Hero';

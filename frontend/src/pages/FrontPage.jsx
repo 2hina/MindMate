@@ -3,10 +3,6 @@ import { register, login } from '../api/auth';
 import { useAuth } from '../context/AuthContext';
 import Background from '../components/Background';
 
-const C = {
-  g1: '#4a9e7f', g2: '#3a7bd5',
-  mint: '#a8e6cf', light: 'rgba(255,255,255,0.65)',
-};
 
 export default function FrontPage() {
   const { login: setUser } = useAuth();
