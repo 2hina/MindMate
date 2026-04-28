@@ -1,0 +1,48 @@
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.db import models
+
+
+class UserManager(BaseUserManager):
+    def create_user(self, email, name, password=None):
+        if not email:
+            raise ValueError('Email is required')
+        email = self.normalize_email(email)
+        user = self.model(email=email, name=name)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, email, name, password):
+        user = self.create_user(email, name, password)
+        user.is_staff = True
+        user.is_superuser = True
+        user.save(using=self._db)
+        return user
+
+
+class User(AbstractBaseUser, PermissionsMixin):
+    email      = models.EmailField(unique=True)
+    name       = models.CharField(max_length=120)
+    avatar     = models.ImageField(upload_to='avatars/', blank=True, null=True)
+    bio        = models.TextField(blank=True)
+    is_active  = models.BooleanField(default=True)
+    is_staff   = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    objects = UserManager()
+
+    USERNAME_FIELD  = 'email'
+    REQUIRED_FIELDS = ['name']
+
+    class Meta:
+        db_table = 'users'
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f'{self.name} <{self.email}>'
+
+    @property
+    def initials(self):
+        parts = self.name.strip().split()
+        return (parts[0][0] + (parts[-1][0] if len(parts) > 1 else '')).upper()
