@@ -4,7 +4,7 @@ const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
 
 // ── Base instance ─────────────────────────────────────────────────────────
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  baseURL: BASE_URL,
   headers: { 'Content-Type': 'application/json' },
   timeout: 60000,
 });
