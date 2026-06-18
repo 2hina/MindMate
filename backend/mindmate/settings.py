@@ -107,8 +107,12 @@ SIMPLE_JWT = {
 }
 
 # ── CORS ───────────────────────────────────────────────────
-CORS_ALLOWED_ORIGINS = config(
-    'CORS_ALLOWED_ORIGINS',
-    default='http://localhost:3000'
-).split(',')
+CORS_ALLOWED_ORIGINS = [
+    "https://mind-mate-khaki.vercel.app",
+    "http://localhost:3000",
+]
 CORS_ALLOW_CREDENTIALS = True
+CSRF_TRUSTED_ORIGINS = [
+    "https://mind-mate-khaki.vercel.app",
+    "https://mindmate-6jvb.onrender.com",
+]
