@@ -6,3 +6,5 @@ python-decouple==3.8
 Pillow==10.4.0
 setuptools
 gunicorn
+psycopg2-binary
+dj-database-url
