@@ -3,7 +3,7 @@ import api from './axios';
 // GET /api/therapists/ — list all therapists
 export const getTherapists = async (params = {}) => {
   const { data } = await api.get('/api/therapists/', { params });
-  return data;
+  return data.results || data;   // ✅ handles paginated response
 };
 
 // GET /api/therapists/<id>/
