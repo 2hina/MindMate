@@ -2,6 +2,10 @@
 
 A full-stack mental wellness web application built with **React** (frontend) and **Django + Django REST Framework** (backend), featuring JWT authentication, mood tracking, stress analysis, AI companion chat, and therapist discovery.
 
+
+🌿 **Live:** [mind-mate-khaki.vercel.app](https://mind-mate-khaki.vercel.app) — your mental wellness companion, deployed and ready to use.
+
+
 ---
 
 ## 📁 Project Structure
